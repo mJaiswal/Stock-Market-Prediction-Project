@@ -13,7 +13,6 @@ CREATE TABLE real_time_data(
    time time,
    price NUMERIC(10, 2),   
    volume integer,
-   adj_close_price NUMERIC(10,2),
    PRIMARY KEY (symbol, date, time)
 );
 
