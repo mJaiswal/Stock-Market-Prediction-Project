@@ -27,3 +27,6 @@ CREATE TABLE historical_data(
    adj_close_price NUMERIC(10,2),
    PRIMARY KEY (symbol, date)
 );
+
+INSERT INTO stocks (symbol, name) VALUES   ('GOOG','Google'),('YHOO','Yahoo'),('INTC','Intel'),('AAPL', 'Apple'),('TSLA' , 'Tesla') ;
+
