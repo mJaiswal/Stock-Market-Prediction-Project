@@ -1,6 +1,3 @@
-package com.postgresql;
-
-
 import java.math.BigDecimal;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,16 +19,18 @@ import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
 /**
- * @author Saibhavya PappiReddy
+ * 
  * Description: This java class inserts historic and real time data into the database 
  *
  */
+
+// This class is a singleton 
 public class StockPrices extends TimerTask{
 	
 	static Statement st = null;
-	static String url = "jdbc:postgresql://localhost/stocks";  // This is the url pointing to the database name 
-	static String user = "Saibhavya"; 						   // Enter the user name or the owner name of the database
-	static String password = "se2pwd";					   // Enter the password or the owner name of the database
+	static String url = "jdbc:postgresql://localhost/postgres";  // This is the url pointing to the database name 
+	static public String user = "postgres";						   // Enter the user name or the owner name of the database
+	static public String password = "oracle";				   // Enter the password or the owner name of the database
 	
 	public static StockPrices sp = null ;
 	public static StockPrices getInstance() {
@@ -44,77 +43,102 @@ public class StockPrices extends TimerTask{
 	private StockPrices(){
 
 	}
+	/*
+	 * arg[0] - hist for historical data processing; real - real-time data processing
+	 */
 	public static void main(String[] args) throws InterruptedException, ParseException, SQLException  {
 
-
+		if(args.length <1)
+		{
+			// No/Worng Arguments arguments passed
+			System.out.println("no arguments given. Exit.");
+			return;
+		}
+		
 		StockPrices s = new StockPrices();
 		s = StockPrices.getInstance();
+		
+		
 
 		java.sql.Connection con = null;
 		ResultSet rs = null;
 
-		Timer timer = new Timer();
+		
+		if ( args[0].toString().equals("hist")  )
+		{
+			// Historical Data 
+			System.out.println("Processing Historical Data ............");
+			try {
+					con = DriverManager.getConnection(url, user, password);
+					st = con.createStatement();
+					int i=0;
 
-		try {
-			con = DriverManager.getConnection(url, user, password);
-			st = con.createStatement();
+					//real time data retreval;
+					Calendar from = Calendar.getInstance();
+					Calendar to = Calendar.getInstance();
+					from.add(Calendar.YEAR, -1); // from 1 year ago
+	
+					String[] symbols = new String[] {"GOOG", "YHOO","INTC","AAPL", "TSLA"};
+					Map<String, Stock> stocks = YahooFinance.get(symbols); // single request
+					Stock google = stocks.get("GOOG");
+					Stock yahoo = stocks.get("YHOO");
+					Stock intel = stocks.get("INTC");
+					Stock apple = stocks.get("AAPL");
+					Stock tesla = stocks.get("TSLA");
+					
+					//Historical data collection
+					List<HistoricalQuote> googleHistQuotes = google.getHistory(from, to, Interval.DAILY);
+					List<HistoricalQuote> yahooHistQuotes = yahoo.getHistory(from, to, Interval.DAILY);
+					List<HistoricalQuote> intelHistQuotes = intel.getHistory(from, to, Interval.DAILY);
+					List<HistoricalQuote> appleHistQuotes = apple.getHistory(from, to, Interval.DAILY);
+					List<HistoricalQuote> teslaHistQuotes = tesla.getHistory(from, to, Interval.DAILY);
+	
+					/* 
+					 * This part of the code inserts data into the historic table
+					 */
+					insertIntoDBHist(googleHistQuotes,"GOOG");
+		        	insertIntoDBHist(yahooHistQuotes,"YHOO");
+		        	insertIntoDBHist(intelHistQuotes,"INTC");
+		        	insertIntoDBHist(appleHistQuotes,"AAPL");
+		        	insertIntoDBHist(teslaHistQuotes,"TSLA");
+		        	
+		        	System.out.println("Historical Data is processed and put into the database successfully.");
+	
+			} catch (SQLException ex) {
 
+				System.out.println("Exception" + ex);
 
-			int i=0;
-
-
-
-			//real time data retreval;
-			Calendar from = Calendar.getInstance();
-			Calendar to = Calendar.getInstance();
-			from.add(Calendar.YEAR, -1); // from 1 year ago
-
-			String[] symbols = new String[] {"GOOG", "YHOO","INTC","AAPL", "TSLA"};
-			Map<String, Stock> stocks = YahooFinance.get(symbols); // single request
-			Stock google = stocks.get("GOOG");
-			Stock yahoo = stocks.get("YHOO");
-			Stock intel = stocks.get("INTC");
-			Stock apple = stocks.get("AAPL");
-			Stock tesla = stocks.get("TSLA");
-			//Historical data collection
-			List<HistoricalQuote> googleHistQuotes = google.getHistory(from, to, Interval.DAILY);
-			List<HistoricalQuote> yahooHistQuotes = yahoo.getHistory(from, to, Interval.DAILY);
-			List<HistoricalQuote> intelHistQuotes = intel.getHistory(from, to, Interval.DAILY);
-			List<HistoricalQuote> appleHistQuotes = apple.getHistory(from, to, Interval.DAILY);
-			List<HistoricalQuote> teslaHistQuotes = tesla.getHistory(from, to, Interval.DAILY);
-
-			/* 
-			 * This part of the code inserts data into the historic table
-			 * insertIntoDBHist(googleHistQuotes,"GOOG");
-        	insertIntoDBHist(googleHistQuotes,"YHOO");
-        	insertIntoDBHist(googleHistQuotes,"INTC");
-        	insertIntoDBHist(googleHistQuotes,"AAPL");
-        	insertIntoDBHist(googleHistQuotes,"TSLA");
-
-			 */
-
-			timer.scheduleAtFixedRate(s, 2000, 10000);
-			//   insertIntoDBReal(google, "GOOG");
-
-
-		} catch (SQLException ex) {
-
-			System.out.println("Exception" + ex);
-
-		} finally {
-			if (st != null) {
-				st.close();
-			}
-			if (con != null) {
-				con.close();
-			}
+			} finally {
+				if (st != null) {
+					st.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			}	 
+			
+			
+			
+		}		
+		else if( args[0].toString().equals("real") )
+		{
+			//Real Time Data
+			System.out.println("Processing Historical Data ............");
+			
+			// Timer is used for getting real time data at regular intervals
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(s, 2000, 10000); // 10000 ms = 10 sec
+			
+			
 		}
+		else
+		{
+			System.out.println("Worng Argument is given. Exit.");
+		}
+		
+}
 
-
-
-	}
-
-	public static void insertIntoDBHist(List<HistoricalQuote> hq, String symbol) throws ParseException, SQLException{
+public static void insertIntoDBHist(List<HistoricalQuote> hq, String symbol) throws ParseException, SQLException{
 
 
 		for( int index=0; index < hq.size(); index++){
@@ -126,13 +150,13 @@ public class StockPrices extends TimerTask{
 
 			date.add(Calendar.DATE, 1);
 			SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-			System.out.println(date.getTime());
+			//System.out.println(date.getTime());
 
 			String formatted = format1.format(date.getTime());
-			System.out.println("Formatted date "+ formatted);
+			//System.out.println("Formatted date "+ formatted);
 			// Output "2012-09-26"
 
-			System.out.println(format1.parse(formatted));
+			//System.out.println(format1.parse(formatted));
 
 
 			BigDecimal high=hq.get(index).getHigh();
@@ -142,14 +166,13 @@ public class StockPrices extends TimerTask{
 			BigDecimal close=hq.get(index).getClose();
 			BigDecimal adjClose=hq.get(index).getAdjClose();
 
-			String sql1 = "INSERT INTO historical_data(symbol,date,open_price,close_price,high_price,low_price,volume,adj_close_price) VALUES ("+symbol+","+formatted+"',"+open+","+close+","+high+","+low+","+volume+")";
+			String sql1 = "INSERT INTO historical_data(symbol,date,open_price,close_price,high_price,low_price,volume,adj_close_price) VALUES ('"+symbol+"','"+formatted+"',"+open+","+close+","+high+","+low+","+volume+","+adjClose+")";
 			st.executeUpdate(sql1);
-
-
+						
 		}
 	}
 
-	public static void insertIntoDBReal(Stock hq, String symbol) throws SQLException, InterruptedException {
+public static void insertIntoDBReal(Stock hq, String symbol) throws SQLException, InterruptedException {
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
@@ -192,6 +215,8 @@ public class StockPrices extends TimerTask{
 			insertIntoDBReal(apple, "AAPL");
 			insertIntoDBReal(tesla, "TSLA");
 
+			System.out.println("Real-time Data for the 5 stocks is processed and put into the database.");
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
