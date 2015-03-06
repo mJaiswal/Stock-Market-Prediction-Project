@@ -123,7 +123,7 @@ public class StockPrices extends TimerTask{
 		else if( args[0].toString().equals("real") )
 		{
 			//Real Time Data
-			System.out.println("Processing Historical Data ............");
+			System.out.println("Processing Real-Time Data ............");
 			
 			// Timer is used for getting real time data at regular intervals
 			Timer timer = new Timer();
