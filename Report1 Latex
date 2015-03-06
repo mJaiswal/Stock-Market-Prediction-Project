@@ -1,0 +1,508 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Course Report Template by Vidur Nayyar
+%Communication Network
+%Spring 2015
+%Rutgers University
+%Group 13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array,makecell}
+\usepackage[english]{babel}
+\usepackage[figuresright]{rotating}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{comment}%commenting out an area
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[section]{placeins}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+\usepackage{siunitx} % Provides the \SI{}{} command for typesetting SI units
+%\usepackage{emp}%for metapostUML
+\usetikzlibrary{shapes.geometric, arrows}% for arrows in flow chart
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic publisher logo
+\usepackage[simplified]{pgf -umlcd}
+\usepackage{graphicx,amssymb,amstext,amsmath} % Required for the inclusion of images
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\newcommand*{\titleGP}{\begingroup % Create the command for including the title page in the document
+\centering % Center all text
+\vspace*{\baselineskip} % White space at the top of the page
+
+\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+
+{\LARGE DATA COLLECTION\\ [0.3\baselineskip] MODEL}\\ [0.3\baselineskip] report 1\\[0.2\baselineskip] % Title
+
+\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
+\rule{\textwidth}{1.6pt}\\[\baselineskip] % Thick horizontal line
+
+\scshape % Small caps
+16:332:568  Software Engineering of Web Applications\\
+Department of Electrical and Computer Engineering\\[\baselineskip] % Tagline(s) or further description
+
+SPRING,  2015\par % Location and year
+{\LARGE GROUP 13}\\
+\vspace*{2\baselineskip} % Whitespace between location/year and editors
+
+Edited by \\[\baselineskip]
+{\Large Arunachalam Thirunavukkarasu\\ Jaiswal Milin \\  Nayyar Vidur \\Pappireddy Bhavya Reddy \\Ravuru Rakesh\par} % Editor list
+{\itshape The State University of New Jersey\\Rutgers \par} % Editor affiliation
+
+\vfill % Whitespace between editor names and publisher logo
+
+
+%{\scshape For Details} \\[0.3\baselineskip] % Year published
+%{\scshape https://sites.google.com/site/vchomeautomation/}\par % Publisher
+
+\endgroup}
+%----------------------------------------------------------------------------------------
+%	SETUP SECTIONS
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+
+%\pagestyle{empty} % Removes page numbers
+\titleGP % This command includes the title page
+
+\newpage
+
+
+
+%----------------------------------------------------------------------------------------
+%	CONTENTS
+%----------------------------------------------------------------------------------------
+\tableofcontents
+\newpage
+%----------------------------------------------------------------------------------------
+%	Contribution Breakdown
+%----------------------------------------------------------------------------------------
+\section{CONTRIBUTION BREAKDOWN}
+Here is the contribution breakdown of the project\\
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[width=1.3\textwidth]{cb.png} % Include the image placeholder.png
+%\caption{ contribution breakdown}
+%\end{center}
+%\end{figure}
+\begin{center}
+\begin{tikzpicture}
+\centering
+        \begin{axis}[
+        enlargelimits=0.14,
+        ybar,
+                width=11cm,
+             height=8cm,
+            symbolic x coords={A Thiru, J Milin, N Vidur, P.B. Reddy, R Rakesh},
+            xtick=data
+          ]
+            \addplot[ybar,fill=blue] coordinates {
+                (A Thiru,   20)
+                (J Milin,  20)
+                (N Vidur,   20)
+                        (P.B. Reddy,   20)
+                        (R Rakesh,   20)
+            };
+            \newline
+
+        \end{axis}
+
+            \end{tikzpicture}
+                                \end{center}
+             %       \newline
+                %                    \newline
+                   %                             \newline
+                      %                                      \newline
+
+                        \begin{table}[htbp]
+\centering 
+
+\begin{tabular}{| m{.29\textwidth}|m{.21\textwidth}|m{.09\textwidth} |m{.09\textwidth}|m{.13\textwidth}|m{.09\textwidth}|}
+\hline
+
+Responsibility &Arunachalam Thirunavukkarasu&Jaiswal Milin&Nayyar Vidur&Pappireddy Bhavya Reddy&Ravuru Rakesh\\
+\hline  
+%\renewcommand\cellalign{ll}\makecell{Project\\ Management(10')} &50\% &30\% &10\% &\quad &\quad &10\%\\ 
+Project Management &20\% &20\% &20\% &20\% &20\%\\
+Customer Statement &20\% &20\% &20\% &20\% &20\%\\%&\quad &\quad &100\% &\quad &\quad\\ 
+System Design &20\% &20\% &20\% &20\% &20\%\\%  &\quad &33\% &\quad &33\% &\quad\\ 
+Database Management &20\% &20\% &20\% &20\% &20\%\\%  &7\% &23\% &22\% &48\% &\quad \\ 
+Java programming &20\% &20\% &20\% &20\% &20\%\\%  &\quad  &20\% &\quad &\quad &\quad\\ 
+%Section5 (25')  &40\% &\quad  &\quad &\quad &60\% \\ 
+%Section6 (5')  &40\% &20\% &\quad &\quad &20\%\\ 
+\hline
+Total (100') &20 &20 &20 &20 &20\\ 
+\hline
+\end{tabular}
+
+All the members have equally contributed for this project.
+
+\caption{CONTRIBUTION BREAKDOWN FOR REPORT 1.}
+\end{table}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+\section{Customer Statement of Requirements(CSR)}
+The market in which shares of publicly held companies are issued and traded either through exchanges or over-the-counter markets. Also known as the equity market, the stock market is one of the most vital components of a free-market economy, as it provides companies with access to capital in exchange for giving investors a slice of ownership in the company. The stock market makes it possible to grow small initial sums of money into large ones, and to become wealthy without taking the risk of starting a business or making the sacrifices that often accompany a high-paying career.[1]\\
+The idea of earning a huge sum of money by investing in the  stock market attracts a lot of people to invest in the stock market. Most of the people invest in the stock market with little knowledge about the trends in the stock market and often misjudge the trends and end up loosing huge sums of money. Even the stock moguls often make mistake in predicting the market trend due to human error. \\
+It is required to develop such a model that predicts the trend of the stock market with high precision which can aid the investors to bag maximum profits from their investments. The first step towards achieving the goal of developing such a system, it is essential to collect the data of the present and past values of stocks under consideration. We have designed a system that would collect the stock market data from www.yahoo.com and collect it to a database for further manipulations and calculations.\\
+
+
+
+
+
+\subsection{Glossary of Terms}
+\paragraph{1.	Stock Market:}A particular market where stocks and bonds are traded.
+
+\paragraph{2.	Data Base:}A comprehensive collection of related data organized for convenient access,.
+
+\paragraph{3.	Singleton function:}A singleton design pattern ensures that only one instance of a class is created
+
+\paragraph{4.	JDBC:}Part of the Java Development Kit which defines an application programming interface for Java for standard SQL access to databases from Java programs. .
+
+\paragraph{5.	PostgreSQL:}Is an advanced relational database management system with some object oriented approaches. PostgreSQL is developed and distributed as free software, and while retaining its freedom it remains technically and featurewise a worthy competitor to even the most advanced commercial alternatives. .
+
+\paragraph{6.	TimerTask:}A task that can be scheduled for one-time or repeated execution by a Timer.. 
+
+\paragraph{7.	API:}An abbreviation of application program interface, is a set of routines, protocols, and tools for building software applications. The API specifies how software components should interact and are used when programming graphical user interface (GUI) components..
+
+\paragraph{8.	JAR:}In software, JAR (Java Archive) is a package file format typically used to aggregate many Java class files and associated metadata and resources (text, images, etc.) into one file to distribute application software or libraries on the Java platform..
+
+\paragraph{9.	Equity:}On a company's balance sheet, the amount of the funds contributed by the owners (the stockholders) plus the retained earnings (or losses). Also referred to as "shareholders' equity".
+
+\paragraph{10.	URL:}Is one type of Uniform Resource Identifier (URI); the generic term for all types of names and addresses that refer to objects on the World Wide Web.
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%NOT INCLUDED
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{comment}
+\paragraph{11.	Android SDK: }
+The Android software development kit (SDK) includes a comprehensive set of development tools.[6] These includes a debugger, libraries, a handset emulator based on QEMU, documentation, sample code, and tutorials. Currently supported development platforms include computers running Linux (any modern desktop Linux distribution), Mac OS X 10.5.8 or later, Windows XP or later; for the moment one can develop Android software on Android itself by using [AIDE - Android IDE - Java, C++] app and [Android java editor] app.
+
+\paragraph{12.	Application programming interface:  }
+An application programming interface (API) specifies how some software components should interact with each other. In addition to accessing databases or computer hardware, such as hard disk drives or video cards, an API can be used to ease the work of programming graphical user interface components. In practice, many times an API comes in form of a library that includes specifications for routines, data structures, object classes, and variables. In some other cases, notably for SOAP and REST services, an API comes as just a specification of remote calls exposed to the API consumers.
+
+\paragraph{13.	Internet protocol suite:  }
+The Internet protocol suite is the networking model and a set of communications protocols used for the Internet and similar networks. It is commonly known as TCP/IP, because its most important protocols, the Transmission Control Protocol (TCP) and the Internet Protocol (IP) were the first networking protocols defined in this standard. It is occasionally known as the DoD model, because the development of the networking model was funded by DARPA, an agency of the United States Department of Defense.
+
+\paragraph{14.	Java class file:  }
+Java class file is a file (with the .class filename extension) containing a Java bytecode which can be executed on the Java Virtual Machine (JVM). Java class file is produced by Java compiler from Java programming language source files (.java files) containing Java classes. If a source file has more than one class, each class is compiled into a separate class file. JVMs are available for many platforms, and the class file compiled in one platform will execute in a JVM of another platform. This makes Java platform-independent.
+
+\paragraph{15.	UI: }
+The user interface, in the industrial design field of human–machine interaction, is the space where interaction between humans and machines occurs. 
+
+\paragraph{16.	User experience:  }
+involves a person's behaviors, attitudes, and emotions about using a particular product, system or service. User experience includes the practical, experiential, affective, meaningful and valuable aspects of human-computer interaction and product ownership. Additionally, it includes a person’s perceptions of system aspects such as utility, ease of use and efficiency.
+
+\paragraph{17.	HCI: }
+human computer interaction
+
+\paragraph{18.	Adobe Photoshop:  }
+Adobe Photoshop is a graphics editing program developed and published by Adobe Systems.
+
+\paragraph{19.	Demo:  }
+Within the computer subculture known as the demo scene, a non-interactive multimedia presentation is called a demo (or demonstration). Demo groups create demos to demonstrate their abilities in programming, music, drawing, and 3D modeling.
+
+\paragraph{20.	HUI:  }
+Handset User Interface.
+
+\paragraph{21.	Customer：}
+The enterprise or department that might want to deploy our system.
+
+\paragraph{22.	Arduino Mega：}
+IThe Arduino Mega is a microcontroller board based on the ATmega 1280. It has 54 digital input/output pins (of which 14 can be used as PWM outputs), 16 analog inputs, 4 UARTs (hardware serial ports), a 16 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started. The Mega is compatible with most shields designed for the Arduino Duemilanove or Diecimila.
+
+\paragraph{23.	Database：}
+A database is a collection of information that is organized so that it can easily be accessed, managed, and updated. In one view, databases can be classified according to types of content: bibliographic, full-text, numeric, and images. 
+
+\paragraph{24.	Delivery：  }
+This term can refer (i) to the process of extraction of the package from the box by the receiver or (ii) to the whole process of delivery (from the booking to the actual delivery).
+
+\paragraph{25.	Inter-building delivery: }
+A delivery process where both the sender and the receiver are in different buildings.
+
+\paragraph{26.	Intra-building delivery: }
+: A delivery process where both the sender and the receiver are in the same building.(may or may not be in the same floor).
+
+\paragraph{27.	Mobile interface:  }
+A web-based user interface working on Android smart phones, where users can view and execute operations through this application. These operations include: book a delivery, check status of package/mail, personal information management, and system maintenance.
+
+\paragraph{28.	Properties of security: }
+Refers to the confidentiality, authenticity, integrity and non-repudiation properties of a secure information transfer. 
+\end{comment}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%NOT INCLUDED ends
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{System Design}
+\subsection{UML Diagram}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{package}{JavaCodeFiles}
+
+\begin{interface}{TimerTask}{0,5}
+ \end{interface}
+
+\begin{class}[text width=8cm]{StockPrice}{7,3}
+\inherit{TimerTask}
+ \attribute{\#st: Statement}
+\attribute{\#url: String}\attribute{+user: String}\attribute{+password: String}
+\operation{-StockPrices():}
+\operation[2]{+getInstance() : StockPrices} 
+\operation[2]{+main(String[]): void}
+\operation[2]{+insertIntoDBHist(List<HistoricalQuote> hq, String): void}
+ \operation[3]{+insertIntoDBReal(Stock, String): void}
+ \operation[2]{+run():void}
+ 
+
+\end{class}
+\end{package}
+
+% virtual operation
+
+\end{tikzpicture}
+\end{center}
+The system has been designed to achieve the objective of acquiring the stock data from an online website and save it into our own database. The system has been implemented on Java SE Environment 8 and the data has been stored on the \textbf{PostGreSQL} database. Database and Java components are integrated by Java Data Base Connectivity(JDBC). \\
+
+\textbf{StockPrices} class provides most of the functionality and is a singleton class which means that only a single instance of this class can be made. SINGLETON CLASS Provide a global point of access to the object . To get real time-data, the StockPrices class extends to the \textbf{TimerTask} class. This timer class is a timer for processing the real time data after a fixed interval of time.\\
+The \textbf{StockPrice} class has important member functions like \textit{Statement st},  \textit{String url}, \textit{String user} and \textit{String password} . All these member functions are used for manipulating the data in the database.\\
+ \paragraph{st member} The function is used for running the SQL statements in the database.\\
+ \paragraph{url member}The is used to point the url of the database being used.\\
+\paragraph{User} is the name of the user name who can access the database and\\
+ \paragraph{password} is linked to a particular user to add security to the system.\\
+
+The  \textit{main()} function lies within the \textbf{StockPrices class}, this is the function at which execution begins in Java. The \textit{main()} function takes in an argument in the form of a string. If the argument entered is “hist”, it represents the historical data and the function to process historic data is executed. Whereas if the entered argument is “real”, it represents the real time data and the execution is diverted to execute the function that processes real-time data. The \textit{main()} function also checks for erroneous entries and stops executing if the number of arguments provides are less than one. When the correct number of arguments are passed, the \textit{main()} function executes the appropriate function to process either the historical data or real time data.\\
+When the function to process the historical data is called by the \textit{main()} function. A connection with the database to fetch all the historical data for the stocks mentioned is established. The stock data being fetched is for yahoo, google, tesla, apple and intel. The data is fetched using the \textit{get()} function of the yahoo api. Once the data has been collected, the main function calls the \textit{insertIntoDBHist()} function which puts the historical data of each of these stocks into the database. After this the main function will exit.\\
+If the argument passed to the \textit{main()} function requires real data to be processed. Under such circumstances, the \textit{main()} function creates a timer by using the \textbf{TimerTask} class. The main fuction will schedule a task to be called every 30 seconds to fetch the real time data using the \textit{get()} function from the yahoo api. Once the data has been collected, the timerTick class’s function calls the \textit{insertIntoDBReal()} function to puts the real data of each of the stocks into the database and then returns the control to the man function to exit the \textit{main()} function.\\
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%NOT INCLUDED
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{comment}
+
+\begin{table}[tbp]
+\centering 
+\begin{tabular}{ | l | l | p{9cm} |}
+\hline
+\textbf{ID} &\textbf{PW}&\textbf{User Story}\\ 
+\hline  
+ST-1 &4 & {As a user, I can use the control system by human language and receive the feedback information, which are also human language.}\\ \hline 
+ST-2 &1 & As a user, I can use my body signal or gestures to turn off or on the lamp or the music system in my house.\\ \hline 
+ST-3 &5 & As a user, I can turn on or turn off my home lamp and my music stereo by voice control.\\ \hline 
+ST-4 &5 & As a user, I can use this system by my cellphone.\\ \hline 
+ST-5 &3 & As a user, I wish to use some buttons to control my house devices. \\ \hline 
+ST-6 &3 &As a user, I can get the feedback information, such as whether the system recognizes the correct information and executes the right actions, and I also want to announce and send the messages again or cancel the action by the feedback information. Also the system should notify if the state of some element has been altered manually.\\ \hline 
+ST-7 &4 & As a user, I can use this system to control my home devices even I am far away from my home.\\ \hline 
+ST-8 &2 & As a user, I can set some limited functions for special people.\\ \hline 
+ST-9 &3 & As a user, I can add or eliminate new devices into the system.\\ \hline 
+ST-10 &2 & As a user, I can check the statues of my home devices by this system.\\ \hline 
+\end{tabular}
+\caption{Functional User Stories.}
+\end{table}
+
+\subsection{Enumerated Nonfunctional Requirements}
+In systems engineering and requirements engineering, a non-functional requirement is a requirement that specifies criteria that can be used to judge the operation of a system, rather than specific behaviors. This should be contrasted with functional requirements that define specific behavior or functions [7].  According to the FURPS [8] definition of non-functional requirements, we would like to divide our non-functional requirements into 5 parts: Accessibility, Usability, Reliability, Performance and supportability. And all the requirements will be treated as user stories in this section [9].\\
+
+\paragraph{Accessibility} 
+Accessibility is the degree to which a product, device, service, or environment is available to as many people as possible. Accessibility can be viewed as the "ability to access" and benefit from some system or entity. In this case our system should be accessible to different kind of people and different kind of devices. People can use our control system in different kind of devices based on android platform (ST-11).
+
+\paragraph{Usability}
+Usability is the ease of use and learnability of a human-made object. Though we make our system based on voice control there are still some concerns about usability. The voice recognition systems usually have troubles with some voice with “accent”, however a user’s requires should be accepted and execute. If the system cannot recognize or fully recognize the user’s command, it should give user some related options based on the command (ST-12). \\
+
+
+Also a system based on voice control doesn’t mean the system can only controlled by voice commands. Users should be able to control the system by press the buttons or by typing the settings (ST-13). With some touch based control method people can control the system without talking.
+
+\paragraph{Reliability}
+Reliability emphasizes dependability in the lifecycle management of a product. Dependability, or reliability, describes the ability of a system or component to function under stated conditions for a specified period of time. People usually live in a house for 5 years or longer [10], so the both the software and the hardware should be able to working a longtime without maintenance (ST-14).\\
+
+
+The hardware in the system should be safe enough to control the switch of some electronic equipment. If user wants to cut off the power, the user should be able to turn on and turn off the smart element by hand (ST-15).\\
+
+
+Also a user should be able to track all the command has been made and the system should keep tracking user’s commands (ST-16). The log helps user and the system to understand the user’s habits better and improve the quality of voice recognition by predicate user’s commands.\\
+
+
+\paragraph{Performance}
+Performance is characterized by the amount of useful work accomplished by a system compared to the time and resources used. A user should get feedback in a very short time after he gives the commands (ST-17), just like talking to a real people. The processing time here should be short enough and the system should relay on the server to do the recognition job and complex calculation works.
+
+\paragraph{Supportability}
+Supportability refers to the ability of technical support personnel to install, configure, and monitor computer products, identify exceptions or faults, debug or isolate faults to root cause analysis, and provide hardware or software maintenance in pursuit of solving a problem and restoring the product into service. Incorporating serviceability facilitating features typically results in more efficient product maintenance and reduces operational costs and maintains business continuity. (ST-18) suggests that there should be a set of documentation of the system so that the system can be maintained with some documentation. Also (ST-19) suggests that there should be a software update to keep the software working in the best condition.
+
+\begin{table}[tbp]
+\centering 
+\begin{tabular}{ | l | l | p{9cm} |}
+\hline
+%\renewcommand\cellalign{ll}\makecell{ID & PW & User Story }\\ 
+\textbf{ID} &\textbf{PW}&\textbf{User Story}\\ 
+\hline  
+%\renewcommand\cellalign{ll}\makecell{ST-11} &3 & As a user, I should be able to control my system in different kind of devices based on android platform.\\
+ST-11 &3 & As a user, I should be able to control my system in different kind of devices based on android platform.\\ \hline 
+ST-12 &4 & As a user, I should be given some related options based on my commands if my commands are not recognized correctly.\\ \hline 
+ST-13 &4 & As a user I should be able to control the system with my android device based on touch screen or input but not only with voice commands.\\ \hline 
+ST-14 &3 & As a user, I should be able to use both the software on the android and the hardware for a longtime without maintenance.\\ \hline 
+ST-15 &2 & As a user I should be able to track all the commands I have sent. \\ \hline 
+ST-16 &3 &As a user, I should be able to turn on and turn off the smart element in my home with my hands.\\ \hline 
+ST-17 &4 & As a user, I should receive some feedbacks after I send a voice commands, whether the commands has been recognized correctly or not.\\ \hline 
+ST-18 &3 & As a user, I should be able to find some documentation about the home automation system online and fix some little problems with the help of the documentation.\\ \hline 
+ST-19 &2 & As a user I should be able to update my software on the android if necessary .\\ \hline 
+\end{tabular}
+\caption{Non-functional User Stories.}
+\end{table}
+
+\subsection{On-Screen Appearance Requirements }
+Our program is home automation based on voice, that means users can control their home more conveniently, what they need to do is just “having a conversation” with their mobile phones. This UI design [11] is based on Android system [12].\\
+
+
+ UI [13]is important, why we say that? As we all know, most users of the product don’t have the enough knowledge of electronic and software, what they can know about their electronic product always via UI. What they can get about the information of product is through clicking the button or rolling along the screen. Thus, our destination of UI design is making a kind of clear and neat interface, which can help us attract more people to generate interest in our product. “To be clear” can make sure that users can understand the functions of the device [14] and can easily learn how to use it, and guarantee that they won’t be confused by what they see. “To be neat” is not equal to “to be simple”, it means that our interface should make users feel comfortable, we try our best to make them achieve their purpose with the least steps. At last, we should make our interface looks harmonious and attractive [15].\\
+
+
+We cannot promise that all users are satisfied with our UI, in fact, no designer is able to do it, but if over 80% peoples like our design, it is good to us.\\
+
+
+\begin{table}[htbp]
+\centering 
+\begin{tabular}{ | l | l | p{9cm} |}
+\hline
+\textbf{ID} &\textbf{PW}&\textbf{Requirement}\\ 
+\hline  
+ST-20 &5 & The interface shall make users be able to input their voice through convenient, clear and easy way.\\\hline  
+ST-21 &4 & The interface shall give users feedback via image or word. The interface should inform users that their voice is received when it is recording.\\\hline  
+ST-22 &3 & The interface shall offer additional button which users can control the system by clicking button in some certain situation.\\\hline  
+ST-23 &3 & The interface shall show users the status of their devices by icon or buttons.\\\hline  
+ST-24 &2 & The interface should support new devices to guarantee that users do not need to abandon their interface when new devices are added. \\\hline  
+ST-25 &2 &The interface shall jump to right desk when it receives certain information and signal.\\\hline  
+ST-26 &1 & The interface should own appropriate overall arrangement and color which can make users feel comfortable when they use it.\\
+\hline
+\end{tabular}
+\caption{On-Screen Appearance Requirements .}
+\end{table}
+
+The pictures below is the preliminary drafts of the interfaces of our system which will be polished and embellished in future, it shows the basic function of our program. Overall, it has 4 separate interfaces: log in interface which is created to guarantee the security and privacy of users [16], main interface through which users can input command, music interface and light interface [17] through which users can check the status of music and light.\\
+
+\newline
+%----------------------------------------------------------------------------------------
+%	SECTION 6
+%----------------------------------------------------------------------------------------
+\section{Project Management}
+
+\subsection{Plan of Work}
+In this section we are going to talk about our tasks and plans. We have teo kinds of jobs in general, the system design related jobs and paper works.\\
+
+
+We treat each week as a building circle so that our plan circle is a week. Table 8 shows the works and the related due time.  Blue part means the tasks has already been finished; Green part represents the jobs we are working on; the yellow parts mean the tasks will be done in the future.\\
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=1\textwidth]{Figure6-1} % Include the image placeholder.png
+%\end{center}
+%\end{figure}
+
+\subsection{Current problems and possible solutions}
+In this section we are going to talk about our current job some major problems we are facing.\\
+
+
+Currently we are working mainly on the UI design and the system logic design. A system like this is a very complicated system; multiple parts are involved in a single command. So far, we have successfully designed the UI and we are now working on the Smart Element design, Server algorithm design and Android based application design. However, while doing our job there is some serious problems we are facing and we are try to get over them.\\
+
+
+The most important purpose of our project is that we want to make our system based on voice control. However, voice recognition and processing is an extremely difficult job. Though we use some APIs provided by Google and Android, we still have to provide some original voice information to the APIs to accomplish the dictation work.  But the environment do have a great influence on our system, some times in the noisy environment, the system can hardly recognize any single word. So may be a kind of filter should be added to the system to control the influence from noise.\\
+
+
+Furthermore, because we know that even the best the voice recognition system cannot fully understand every command. People can be confused if the system cannot understand their commands for some times. Focus on such situation, we are try to build a Server algorithm that even the system only recognize a part of the users’ command, it would still be able to give user some control feedbacks or control suggestions.\\
+
+
+Also we have some concerns about the Smart Elements at home. We want to make them energy saving which means those smart elements will shutdown themselves automatically at night and start up in the morning. However, such design may face the problem that what if people want to use the smart elements at night. We are still trying to find a better design logic to deal with it.\\
+
+\subsection{Next steps}
+In the future we will focus on two type of things based on our home automation system.\\
+
+
+One type of things is that we will try to build as many kinds of Smart Elements as possible. Different Elements can do different jobs as home and all the Smart Elements share a same communication protocol and design logic, which mean all the new and old Smart Elements can working together in a same system environment. We can add a bunch of new features into our systems like control your washing machine with your voice or control your coffee machine or TV with voice commands.\\
+
+
+Also we would like to bring some new control method to our system. Voice control is a really good method to communicate with system, but there are some situations people cannot talk to their cellphones or people are not willing to talk to their cellphones. In this case we would like to build a pattern based control system. In general people can control the Smart elements at home b drawing some patterns in the cellphones.\\
+
+\end{comment}
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%NOT INCLUDED ENDS
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+
+
+\section{Reference}
+\textbf{[1]}. \uppercase{\url{http://www.investopedia.com/terms/s/stockmarket.asp}}\\
+\textbf{[2]}.\uppercase{ \url{ http://finance.yahoo.com}}\\
+\textbf{[3]USER STORIES}. \url{HTTP://WWW.ECE.RUTGERS.EDU/~MARSIC/BOOKS/SE/}\\
+\textbf{[4]SOFTWARE ENGINEERING}. \url{HTTP://WWW.ECE.RUTGERS.EDU/~MARSIC/BOOKS/SE/}\\
+\begin{comment}
+\textbf{[5]ANDROID APPLICATION PLATFORM}. \url{WWW.MANTRAIS.COM/MOBILE/ANDROID-APPLICATION-DEVELOPMENT/}\\
+\textbf{[6]VOICE COMMAND DEVICE}. \url{HTTP://EN.WIKIPEDIA.ORG/WIKI/VOICE_COMMAND_DEVICE}\\
+\textbf{[7]NON-FUNCTIONAL REQUIREMENT}. \url{HTTP://EN.WIKIPEDIA.ORG/WIKI/NON-FUNCTIONAL_REQUIREMENT}\\
+\textbf{[8]FURPS}. \url{HTTP://EN.WIKIPEDIA.ORG/WIKI/FURPS}\\
+\textbf{[9]NON-FUNCTIONAL REQUIREMENT}. \url{HTTP://WWW.MOUNTAINGOATSOFTWARE.COM/BLOG/NON-FUNCTIONAL-REQUIREMENTS-AS-USER-STORIES}\\
+\textbf{[10]HOUSING}. \url{HTTP://MONEYNING.COM/HOUSING/THE-FIVE-YEAR-RULE-FOR-BUYING-A-HOUSE/}\\
+\textbf{[11]UI-OVERVIEW}. \url{HTTP://DEVELOPER.ANDROID.COM/DESIGN/GET-STARTED/UI-OVERVIEW.HTML}\\
+\textbf{[12]ANDROID}. \url{HTTP://WWW.ANDROID.COM/ABOUT/}\\
+\textbf{[13]MOBILEPHONE UI DESIGN}. \url{HTTPS://WWW.GOOGLE.COM.HK/SEARCH?Q=MOBILE+UI+DESIGN&SAFE=STRICT&SA=X&TBM=ISCH&TBO=U&SOURCE=UNIV&EI=3OLMUOSCLIHQ8QTBNOG4AG&VED=0CDUQSAQ&BIW=1280&BIH=650&DPR=1}\\
+\textbf{[14]MOBILE-PATTERNS}. \url{HTTP://WWW.MOBILE-PATTERNS.COM/}\\
+\textbf{[15]MOBILE APP DESIGN}. \url{HTTP://WWW.1STWEBDESIGNER.COM/DESIGN/MOBILE-APPS-DESIGNS/}\\
+\textbf{[16]GLADE}. \url{HTTPS://GLADE.GNOME.ORG/}\\
+\textbf{[17]HOME AUTOMATION AND CONTROL}. \url{HTTP://WWW.SAVANTSYSTEMS.COM/HOME_AUTOMATION_AND_CONTROL.ASPX}\\
+\textbf{[18]SOFTWARE ENGINEERING}. \url{HTTP://WWW.ECE.RUTGERS.EDU/~MARSIC/BOOKS/SE/}\\
+\textbf{[19]STAKEHOLDERS}. \url{HTTP://EN.WIKIPEDIA.ORG/WIKI/STAKEHOLDERS}\\
+\textbf{[20]USE CASE}. \url{HTTP://EN.WIKIPEDIA.ORG/WIKI/USE_CASE#ACTORS}\\
+\end{comment}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
