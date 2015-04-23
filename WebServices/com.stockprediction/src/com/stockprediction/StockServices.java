@@ -27,7 +27,7 @@ public class StockServices {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)*/
 	
-	@Path("/clossingprice")
+	@Path("/closingprice")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getStockPrice(
