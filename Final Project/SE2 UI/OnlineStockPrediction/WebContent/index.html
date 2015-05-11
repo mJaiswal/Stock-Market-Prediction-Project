@@ -1,0 +1,167 @@
+<!-- 
+
+/*
+ written by: Milin Jaiswal
+ assisted by: Vidur Nyyar
+ debugged by: Milin Jaiswal
+*/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="">
+	
+	<title>OSF - Online Stock Forecasting</title>
+
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
+	<link rel="stylesheet" href="assets/css/main.css">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body class="home">
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="navbar-brand" href="index.html"><img src="" alt="GROUP-13"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a href="#">Home</a></li>
+					
+					<li><a href="contact.html">Contact</a></li>
+					<li><a class="btn" href="signin.jsp">SIGN IN / SIGN UP</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div> 
+	<!-- /.navbar -->
+
+	<!-- Header -->
+	<header id="head">
+		<div class="container">
+			<div class="row">
+				<h1 class="lead">Online Stock Forecaster</h1>
+				<p class="tagline">Group-13's Final Project for ECE-568 Spring 2015 - Software Engineering Web Application</p>
+				
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<!-- /Intro-->
+		
+	<!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			
+			<h3 class="text-center thin">Highlights of our project</h3>
+			
+			<div class="row">
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Web Services on Amazon AWS</h4></div>
+					<div class="h-body text-center">
+						<p>Access to our web services would be required by the persons doing the development for the
+front end and the persons developing the prediction strategies. To make each person’s work
+independent of each other, we decided to host our PostgreSQL database and web services on the
+Amazon cloud as it would help in true distributed development.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Featuring Google Trends</h4></div>
+					<div class="h-body text-center">
+						<p>As a fun feature the user can view the google trends chart for the past 5 years for any
+stock. The idea behind this feature is that, a high trending value for any name on Google is
+directly proportional to the popularity of the topic(interest of the topic over time). This concept
+can be made use as a factor for weighting the buy/sell/hold decision by the user.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Good Recommendation Policy</h4></div>
+					<div class="h-body text-center">
+						<p>As mentioned above the application provides recommendations to the user whether he should
+buy, sell or hold on to the stock. This decision is made using the predicted stock value using the
+long-term prediction algorithms. Google trend provides give a fair indication of the popularity of
+the company under review. Usually the more a company is searched, the popular it is and that
+makes it price to rise in the future.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>UI Twitter BootStrap and Jersey Framwork</h4></div>
+					<div class="h-body text-center">
+						<p> We have used Twitter Bootstrap  for UI development.
+						Jersey RESTful Web Services framework is open source, production quality, framework, for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
+						</p>
+					</div>
+				</div>
+				
+			</div> <!-- /row  -->
+		
+		</div>
+	</div>
+	<!-- /Highlights -->
+
+
+	
+
+
+
+	<footer id="footer" class="top-space">
+
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="simplenav">
+								<a href="#">Home</a> | 
+								 
+								<a href="contact.html">Contact</a> |
+								<b><a href="signup.html">Sign up</a></b>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="text-right">
+								Copyright &copy; 2015, Group-13 [ Milin, Thiru, Bhavya, Rakesh, Vidur ] </p>
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+		</div>
+
+	</footer>	
+		
+
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
+</body>
+</html>

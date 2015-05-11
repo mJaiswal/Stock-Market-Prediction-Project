@@ -1,0 +1,2 @@
+These folders here are Eclipse Projects Exported to file system. 
+So you can import these projects via Eclipse again.
